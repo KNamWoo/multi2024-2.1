@@ -1,11 +1,219 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>회원 가입 - HTML & CSS </title>
+    <style>
+        /*태그 이름 선택자*/
+        body{
+            font-family: Arial, sans-serif;
+            background-color: ivory;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #333333;
+            text-align: center;
+        }
+
+        form {
+            background-color: rgb(247, 173, 193);
+            padding: 20px;
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        fieldset {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        legend {
+            font-weight: bold;
+            color: #555;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        /* 속성 선택자 및 select 태그 이름 선택자 */
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"],
+        input[type="time"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        /* 가상 선택자 */
+        input:focus {
+            border-color: #0066cc;
+            outline: none;
+            background-color: #e6f7ff;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 0 auto;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* 속성 선택자 */
+        input[required] {
+            border-left: 3px solid #ff0000;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        /* 체크박스와 라벨을 수평 정렬 */
+        .checkbox-group label,
+        .radio-group label {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 10px;
+        }
+
+        /* 클래스 선택자 */
+        .highlight {
+            color:#0066cc;
+            font-weight: bold;
+        }
+
+        /* ID 선택자 */
+        #agreement {
+            margin-top: 10px;
+        }
+
+        /* 가상 선택자 추가 */
+        fieldset:hover {
+            border-color: #888;
+            background-color: #f0f0f0;
+        }
+    </style>
 </head>
 <body>
-    
+    <h2 class="highlight">회원 가입</h2>
+    <form >
+
+        <!-- 개인 정보 필드셋 -->
+         <fieldset>
+            <legend>개인 정보</legend>
+            
+            <!-- 이름 입력 -->
+            <label for="name">이름:</label>
+            <input type="text" id="name" name="name" required>
+
+            <!-- 전화번호 입력 -->
+            <label for="phone">전화번호:</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
+                 placeholder="010-1234-5678" required>
+
+            <!-- 이메일 입력 -->
+            <label for="email">이메일:</label>
+            <input type="email" id="email" name="email" required>
+
+            <!-- 비밀번호 입력 -->
+            <label for="password">비밀번호:</label>
+            <input type="password" id="password" name="password" required>
+
+            <!-- 비밀번호 확인 -->
+            <label for="confirm_password">비밀번호 확인:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+         </fieldset>
+
+        <!-- 추가 정보 필드셋 -->
+        <fieldset>
+            <legend>추가 정보</legend>
+
+            <!-- 성별 선택 (라디오 버튼) -->
+            <div class="radio-group">
+                <label for="male">
+                    <input type="radio" id="male" name="gender" value="male" required> 남성
+                </label>
+                <label for="female">
+                    <input type="radio" id="female" name="gender" value="female"> 여성
+                </label>
+                <label for="other">
+                    <input type="radio" id="other" name="gender" value="other"> 기타
+                </label>
+            </div>
+
+            <!-- 생년월일 선택 -->
+            <label for="birthdate">생년월일:</label>
+            <input type="date" id="birthdate" name="birthdate" required>
+
+            <!-- 선호하는 시간 선택 -->
+            <label for="preferred_time">선호하는 시간:</label>
+            <input type="time" id="preferred_time" name="preferred_time" required>
+
+            <!-- 직업 선택 (드롭다운 목록) -->
+            <label for="job">직업:</label>
+            <select id="job" name="job" required>
+                <option value="" disabled selected>직업을 선택하세요</option>
+                <option value="developer">개발자</option>
+                <option value="designer">디자이너</option>
+                <option value="teacher">교사</option>
+                <option value="student">학생</option>
+                <option value="engineer">엔지니어</option>
+                <option value="other">기타</option>
+            </select>
+
+            <!-- 관심 분야 선택 (체크박스) -->
+            <label>관심 분야:</label>
+            <div class="checkbox-group">
+                <label for="tech">
+                    <input type="checkbox" id="tech" name="interest" value="technology"> 기술
+                </label>
+                <label for="sports">
+                    <input type="checkbox" id="sports" name="interest" value="sports"> 스포츠
+                </label>
+                <label for="music">
+                    <input type="checkbox" id="music" name="interest" value="music"> 음악
+                </label>
+                <label for="art">
+                    <input type="checkbox" id="art" name="interest" value="art"> 예술
+                </label>
+                <label for="travel">
+                    <input type="checkbox" id="travel" name="interest" value="travel"> 여행
+                </label>
+            </div>
+
+            <!-- 가입 동의 (체크박스) -->
+            <label for="agreement">
+                <input type="checkbox" id="agreement" name="agreement" required> 약관에 동의합니다.
+            </label>
+        </fieldset>
+
+        <!-- 제출 버튼 -->
+        <input type="submit" value="회원 가입">
+    </form>
 </body>
 </html>
