@@ -7,9 +7,9 @@ function second() {
 }
 
 function third() {
-    location.href="./01week/실습-1.html";
+    location.href="./03week/실습-1.html";
 }
 
 function fourth() {
-    location.href="./01week/index.html";
+    location.href="./04week/index.html";
 }
