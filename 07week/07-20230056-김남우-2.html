@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HTML 태그에 이벤트 연결</title>
+        <style>
+            #hoverText {
+                font-size: 20px;
+                color: black;
+            }
+        </style>
+        <script>
+            function changeColor() {
+                document.getElementById('hoverText').style.color = 'red';
+                document.getElementById('hoverText').style.backgroundColor = 'yellow';
+                document.getElementById('hoverText').style.border = '1px dashed black';
+            }
+
+            function resetColor() {
+                document.getElementById('hoverText').style.color = 'black';
+                document.getElementById('hoverText').style.backgroundColor = 'white';
+                document.getElementById('hoverText').style.border = 'none';
+            }
+
+            function showKeyPressed(event) {
+                document.getElementById('keyPressed').textContent = `눌린 키 : ${event.key}`;
+            }
+        </script>
+    </head>
+    <body>
+        <h1>HTML 태그에 이벤트 연결 예제</h1>
+        <p id="hoverText" onmouseover="changeColor()" onmouseout="resetColor()">
+            마우스를 이 텍스트 위로 올려보세요.
+        </p>
+
+        <input type="text" onkeydown="showKeyPressed(event)" placeholder="키보드를 눌러보세요">
+        <p id="keyPressed">눌린 키 : </p>
+    </body>
+</html>
