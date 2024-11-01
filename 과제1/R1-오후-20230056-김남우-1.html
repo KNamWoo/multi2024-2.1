@@ -14,136 +14,136 @@
 
         <!-- 자바스크립트 코드 작성 -->
         <script>
-        // 총합 계산 합수
-        const calculateSum = (numbers) => {
-            let sum = 0;
+            // 총합 계산 합수
+            const calculateSum = (numbers) => {
+                let sum = 0;
 
-            for (let i = 0; i < numbers.length; i++) {
-            sum += numbers[i];
-            }
-
-            return sum;
-        };
-
-        // 평균 계산 함수
-        const calculateAverage = (numbers) => {
-            const sum = calculateSum(numbers);
-            return parseFloat(sum) / parseFloat(numbers.length);
-        };
-
-        // 최대값 계산 함수
-        const calculateMax = (numbers) => {
-            let max = numbers[0];
-
-            for (let i = 1; i < numbers.length; i++) {
-            if (max < numbers[i]) {
-                max = numbers[i];
-            }
-            }
-
-            return max;
-        };
-
-        // 최소값 계산 함수
-        const calculateMin = (numbers) => {
-            let min = numbers[0];
-
-            for (let i = 1; i < numbers.length; i++) {
-            if (min > numbers[i]) {
-                min = numbers[i];
-            }
-            }
-
-            return min;
-        };
-
-        // 표준편차 계산 함수
-        const calculateStandardDeviation = (numbers) => {
-            const mean = calculateAverage(numbers);
-            let variance = 0;
-
-            for (let i = 0; i < numbers.length; i++) {
-            variance += (numbers[i] - mean) * (numbers[i] - mean);
-            }
-
-            variance /= numbers.length;
-            return Math.sqrt(variance);
-        };
-
-        // 중복 검사 함수
-        const hasDuplicates = (numbers, num) => {
-            for (let i = 0; i < numbers.length; i++) {
-            if (numbers[i] === num) {
-                return true;
-            }
-            }
-
-            return false;
-        };
-
-        // 입력 시작하기
-        function startInput() {
-            const count = parseInt(document.getElementById("count").value, 10);
-
-            if (isNaN(count) || count < 1) {
-            alert("숫자의 개수를 올바르게 입력하세요.");
-            return;
-            }
-
-            const numbers = [];
-
-            for (let i = 0; i < count; i++) {
-            let num;
-            let isDuplicate;
-
-            do {
-                num = parseInt(prompt(`정수 ${i + 1}를 입력하세요:`), 10);
-
-                // 유효성 검사: 숫자인지 확인
-                if (isNaN(num)) {
-                alert("유효한 숫자를 입력하세요.");
-                continue;
+                for (let i = 0; i < numbers.length; i++) {
+                    sum += numbers[i];
                 }
 
-                // 중복 검사: 이미 입력된 값인지 확인
-                isDuplicate = hasDuplicates(numbers, num);
+                return sum;
+            };
 
-                if (isDuplicate) {
-                alert("중복된 값이 있습니다. 다른 값을 입력해주세요.");
+            // 평균 계산 함수
+            const calculateAverage = (numbers) => {
+                const sum = calculateSum(numbers);
+                return parseFloat(sum) / parseFloat(numbers.length);
+            };
+
+            // 최대값 계산 함수
+            const calculateMax = (numbers) => {
+                let max = numbers[0];
+
+                for (let i = 1; i < numbers.length; i++) {
+                    if (max < numbers[i]) {
+                        max = numbers[i];
+                    }
                 }
-            } while (isNaN(num) || isDuplicate); // 유효한 숫자이면서 중복이 아닐 때까지 반복
 
-            numbers[i] = num;
+                return max;
+            };
+
+            // 최소값 계산 함수
+            const calculateMin = (numbers) => {
+                let min = numbers[0];
+
+                for (let i = 1; i < numbers.length; i++) {
+                    if (min > numbers[i]) {
+                        min = numbers[i];
+                    }
+                }
+
+                return min;
+            };
+
+            // 표준편차 계산 함수
+            const calculateStandardDeviation = (numbers) => {
+                const mean = calculateAverage(numbers);
+                let variance = 0;
+
+                for (let i = 0; i < numbers.length; i++) {
+                    variance += (numbers[i] - mean) * (numbers[i] - mean);
+                }
+
+                variance /= numbers.length;
+                return Math.sqrt(variance);
+            };
+
+            // 중복 검사 함수
+            const hasDuplicates = (numbers, num) => {
+                for (let i = 0; i < numbers.length; i++) {
+                    if (numbers[i] === num) {
+                        return true;
+                    }
+                }
+
+                return false;
+            };
+
+            // 입력 시작하기
+            function startInput() {
+                const count = parseInt(document.getElementById("count").value, 10);
+
+                if (isNaN(count) || count < 1) {
+                    alert("숫자의 개수를 올바르게 입력하세요.");
+                    return;
+                }
+
+                const numbers = [];
+
+                for (let i = 0; i < count; i++) {
+                    let num;
+                    let isDuplicate;
+
+                    do {
+                        num = parseInt(prompt(`정수 ${i + 1}를 입력하세요:`), 10);
+
+                        // 유효성 검사: 숫자인지 확인
+                        if (isNaN(num)) {
+                            alert("유효한 숫자를 입력하세요.");
+                            continue;
+                        }
+
+                        // 중복 검사: 이미 입력된 값인지 확인
+                        isDuplicate = hasDuplicates(numbers, num);
+
+                        if (isDuplicate) {
+                            alert("중복된 값이 있습니다. 다른 값을 입력해주세요.");
+                        }
+                    } while (isNaN(num) || isDuplicate); // 유효한 숫자이면서 중복이 아닐 때까지 반복
+
+                    numbers[i] = num;
+                }
+
+                // 입력된 값을 출력
+                numberList = "";
+                for (let i = 0; i < numbers.length; i++) {
+                    numberList += numbers[i];
+
+                    if (i != numbers.length - 1) {
+                        numberList += ", ";
+                    }
+                }
+
+                // 총합, 평균, 최대값, 최소값, 표준편차 계산
+                const sum = calculateSum(numbers);
+                const average = calculateAverage(numbers);
+                const max = calculateMax(numbers);
+                const min = calculateMin(numbers);
+                const standardDeviation = calculateStandardDeviation(numbers);
+
+                // 결과 출력
+                const resultDiv = document.getElementById("result");
+                resultDiv.innerHTML = `
+                    <p>입력된 값: ${numberList}</p>
+                    <p>총합: ${sum}</p>
+                    <p>평균: ${average}</p>
+                    <p>최대값: ${max}</p>
+                    <p>최소값: ${min}</p>
+                    <p>표준편차: ${standardDeviation}</p>
+                `;
             }
-
-            // 입력된 값을 출력
-            numberList = "";
-            for (let i = 0; i < numbers.length; i++) {
-            numberList += numbers[i];
-
-            if (i != numbers.length - 1) {
-                numberList += ", ";
-            }
-            }
-
-            // 총합, 평균, 최대값, 최소값, 표준편차 계산
-            const sum = calculateSum(numbers);
-            const average = calculateAverage(numbers);
-            const max = calculateMax(numbers);
-            const min = calculateMin(numbers);
-            const standardDeviation = calculateStandardDeviation(numbers);
-
-            // 결과 출력
-            const resultDiv = document.getElementById("result");
-            resultDiv.innerHTML = `
-                <p>입력된 값: ${numberList}</p>
-                <p>총합: ${sum}</p>
-                <p>평균: ${average}</p>
-                <p>최대값: ${max}</p>
-                <p>최소값: ${min}</p>
-                <p>표준편차: ${standardDeviation}</p>
-            `;
-        }
         </script>
     </body>
 </html>

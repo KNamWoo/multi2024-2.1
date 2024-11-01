@@ -5,138 +5,146 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>알록달록 확장된 계산기</title>
         <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #ffebf0;
-        }
-        .calculator {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            max-width: 300px;
-            text-align: center;
-            border: 2px solid #ff9a9e;
-        }
-        .calculator input,
-        .calculator select,
-        .calculator button {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            border-radius: 5px;
-            border: 1px solid #c9b6e4; /* 모든 폼 요소의 테두리 색상 통일 */
-            font-size: 16px;
-            box-sizing: border-box;
-        }
-        .calculator input {
-            background-color: #f9f1ff;
-            color: #6a1b9a;
-        }
-        .calculator select {
-            background-color: #ffe5b4;
-            color: #6a1b9a;
-        }
-        .calculator button {
-            background-color: #81c784;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        .calculator button:hover {
-            background-color: #66bb6a;
-        }
-        .result {
-            font-size: 18px;
-            color: #ff6f61;
-            margin-top: 10px;
-        }
-        h2 {
-            color: #ff6f91;
-        }
+            body {
+                font-family: Arial, sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                background-color: #ffebf0;
+            }
+            .calculator {
+                background-color: #ffffff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                max-width: 300px;
+                text-align: center;
+                border: 2px solid #ff9a9e;
+            }
+            .calculator input,
+            .calculator select,
+            .calculator button {
+                width: 100%;
+                padding: 10px;
+                margin: 8px 0;
+                border-radius: 5px;
+                border: 1px solid #c9b6e4; /* 모든 폼 요소의 테두리 색상 통일 */
+                font-size: 16px;
+                box-sizing: border-box;
+            }
+            .calculator input {
+                background-color: #f9f1ff;
+                color: #6a1b9a;
+            }
+            .calculator select {
+                background-color: #ffe5b4;
+                color: #6a1b9a;
+            }
+            .calculator button {
+                background-color: #81c784;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+            .calculator button:hover {
+                background-color: #66bb6a;
+            }
+            .result {
+                font-size: 18px;
+                color: #ff6f61;
+                margin-top: 10px;
+            }
+            h2 {
+                color: #ff6f91;
+            }
         </style>
     </head>
     <body>
         <div class="calculator">
-        <h2>알록달록 확장된 계산기</h2>
-        <input type="number" id="num1" placeholder="첫 번째 숫자 입력" />
-        <input type="number" id="num2" placeholder="두 번째 숫자 입력" />
-        <select id="operator">
-            <option value="+">+</option>
-            <option value="-">-</option>
-            <option value="*">*</option>
-            <option value="/">/</option>
-            <option value="%">%</option>
-            <option value="**">거듭제곱</option>
-            <option value="max">두 수 중 큰 수</option>
-        </select>
-        <button onclick="calculate()">계산하기</button>
-        <div class="result" id="result"></div>
+            <h2>알록달록 확장된 계산기</h2>
+            <input type="number" id="num1" placeholder="첫 번째 숫자 입력" />
+            <input type="number" id="num2" placeholder="두 번째 숫자 입력" />
+            <select id="operator">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+                <option value="%">%</option>
+                <option value="**">거듭제곱</option>
+                <option value="max">두 수 중 큰 수</option>
+            </select>
+            <button onclick="calculate()">계산하기</button>
+            <div class="result" id="result"></div>
         </div>
 
         <!-- 자바스크립트 코드 작성 -->
         <script>
-        const calculate = () => {
-            let number1 = parseFloat(document.getElementById("num1").value);
-            let number2 = parseFloat(document.getElementById("num2").value);
-            let op = document.getElementById("operator").value;
-            switch (op) {
-            case "+": {
-                value = number1 + number2;
-                document.getElementById("result").textContent = "결과: " + value;
-                break;
-            }
+            const calculate = () => {
+                let number1 = parseFloat(document.getElementById("num1").value);
+                let number2 = parseFloat(document.getElementById("num2").value);
+                let op = document.getElementById("operator").value;
+                
+                switch (op) {
+                    case "+": {
+                        value = number1 + number2;
+                        document.getElementById("result").textContent = "결과: " + value;
+                        break;
+                    }
 
-            case "-": {
-                value = number1 - number2;
-                document.getElementById("result").textContent = "결과: " + value;
-                break;
-            }
-            case "*": {
-                value = number1 * number2;
-                document.getElementById("result").textContent = "결과: " + value;
-                break;
-            }
-            case "/": {
-                if (number2) {
-                value = number1 / number2;
-                } else {
-                value = "0으로 나눌 수 없습니다.";
+                    case "-": {
+                        value = number1 - number2;
+                        document.getElementById("result").textContent = "결과: " + value;
+                        break;
+                    }
+                        
+                    case "*": {
+                        value = number1 * number2;
+                        document.getElementById("result").textContent = "결과: " + value;
+                        break;
+                    }
+                        
+                    case "/": {
+                        if (number2) {
+                            value = number1 / number2;
+                        } else {
+                            value = "0으로 나눌 수 없습니다.";
+                        }
+                        document.getElementById("result").textContent = "결과: " + value;
+                        break;
+                    }
+                        
+                    case "%": {
+                        if (number2) {
+                            value = number1 % number2;
+                        } else {
+                            value = "0으로 나눌 수 없습니다.";
+                        }
+                        document.getElementById("result").textContent = "결과: " + value;
+                        break;
+                    }
+                        
+                    case "**": {
+                        value = 1;
+                        for (let i = 0; i < number2; i++) {
+                            value *= number1;
+                        }
+                        document.getElementById("result").textContent = "결과: " + value;
+                        break;
+                    }
+                        
+                    case "max": {
+                        value = Math.max(number1, number2);
+                        document.getElementById("result").textContent = "결과: " + value;
+                        break;
+                    }
+                        
+                    default:{
+                        break;
+                    }
                 }
-                document.getElementById("result").textContent = "결과: " + value;
-                break;
-            }
-            case "%": {
-                if (number2) {
-                value = number1 % number2;
-                } else {
-                value = "0으로 나눌 수 없습니다.";
-                }
-                document.getElementById("result").textContent = "결과: " + value;
-                break;
-            }
-            case "**": {
-                value = 1;
-                for (let i = 0; i < number2; i++) {
-                value *= number1;
-                }
-                document.getElementById("result").textContent = "결과: " + value;
-                break;
-            }
-            case "max": {
-                value = Math.max(number1, number2);
-                document.getElementById("result").textContent = "결과: " + value;
-                break;
-            }
-            default:
-                break;
-            }
-        };
+            };
         </script>
     </body>
 </html>
