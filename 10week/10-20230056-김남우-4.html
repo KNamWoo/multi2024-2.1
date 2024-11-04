@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title> 함수 </title>
+        <script>
+            //4개의 색상 데이터가 저장된 배열 객체를 변수 color로 참조
+            var color = ["white", "yellow", "pink", "aqua", "purple"];
+
+            var i = 0; // 변수 i에 초기값 지정
+
+            //colorBg함수를 정의
+            function colorBg(){
+                i++; // 변수 i에 데이터를 1씩 증가시킴.
+                if(i>=color.length) i=0;
+
+                // <body> 요소를 불러와 변수 bodyTag에 참조
+                var bodyTag=document.getElementsByTagName("body")[0];
+
+                //스타일을 이용해 <body>에 배경 색상이 바뀜
+                bodyTag.style.backgroundColor=color[i];
+            }
+        </script>
+    </head>
+    <body>
+        <button onclick="colorBg();">배경색 바꾸기</button>
+    </body>
+</html>
