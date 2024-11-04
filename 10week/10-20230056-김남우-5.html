@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 현재 시각 가져오기
+            const now = new Date();
+            const hours = now.getHours();
+
+            // 시간대에 따른 인사말
+            const greeting = hours < 12 ? '좋은 아침입니다!' :
+                             hours < 18 ? '좋은 오후입니다!' :
+                             '좋은 저녁입니다!';
+            
+            /*
+                if(hours < 12){
+                    greeting = '좋은 아침입니다!';
+                }else if(hours < 18){
+                    greeting = '좋은 오후입니다!';
+                }else{
+                    greeting = '좋은 저녁입니다!';
+                }
+            */
+
+            // 하루가 끝날 때까지 남은 시간 계산
+            const endOfDay = new Date(now);
+            endOfDay.setHours(24, 0, 0, 0); // 다음 날 0시로 설정
+            const timeRemaining = endOfDay - now;
+
+            const hoursRemaining = Math.floor(timeRemaining / 3600000); // 1시간 = 3600000ms
+            const minutesRemaining = Math.floor((timeRemaining % 3600000) / 60000); // 1분 = 60000ms
+            const secondRemaining = Math.floor((timeRemaining % 60000) / 1000); // 1초 = 1000ms
+
+            // 출력
+            document.write(`<h2>${greeting}</h2>`);
+            document.write(`<p>오늘 하루가 끝날 때까지 ${hoursRemaining}시간 ${minutesRemaining}분 ${secondRemaining}초 남았습니다!</p>`);
+        </script>
+    </body>
+</html>
