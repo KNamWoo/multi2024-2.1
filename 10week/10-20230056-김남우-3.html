@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="contents">
+            <input type="text" id="word">
+            <button id="bttn">글자 수 확인</button>
+        </div>
+        <div id="result" style="color: blue; font-size: 30px;"></div>
+
+        <script>
+            const button = document.querySelector("#bttn");
+            button.addEventListener("click", () => {
+                const word = document.querySelector("#word").value; // input 영역 텍스트 상자의 내용
+                const result = document.querySelector("#result"); // 결과값을 표시할 div 영역
+                let count = word.length; // 문자열의 길이를 구해서 넣음
+
+                result.innerText = `${count}`; // 결과값을 div 영역에 표시
+            });
+        </script>
+    </body>
+</html>
