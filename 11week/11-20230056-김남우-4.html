@@ -1,42 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> 학생 성적 </title>
-</head>
-<body>
-    <script>
-        // 학생 목록 배열생성(리터럴 방식)
-        let students = [
-            { name: "김동국", score: 85 },
-            { name: "박고려", score: 92 },
-            { name: "이연세", score: 78 },
-            { name: "윤서울", score: 88 },
-            { name: "홍이화", score: 95 }
-        ];
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> 학생 성적 </title>
+    </head>
+    <body>
+        <script>
+            // 학생 목록 배열생성(리터럴 방식)
+            let students = [
+                { name: "김동국", score: 85 },
+                { name: "박고려", score: 92 },
+                { name: "이연세", score: 78 },
+                { name: "윤서울", score: 88 },
+                { name: "홍이화", score: 95 }
+            ];
 
-        // 버블 정렬을 이용한 내림차순 정렬
-        for (let i = 0; i < students.length - 1; i++) {
-            for (let j = 0; j < students.length - 1 -i; j++) {
-                if (students[j].score < students[j + 1].score) {
-                    // 점수가 더 큰 학생을 앞으로 이동
-                    let temp = students[j];
-                    students[j] = students[j + 1];
-                    students[j + 1] = temp;
+            // 버블 정렬을 이용한 내림차순 정렬
+            for (let i = 0; i < students.length - 1; i++) {
+                for (let j = 0; j < students.length - 1 -i; j++) {
+                    if (students[j].score < students[j + 1].score) {
+                        // 점수가 더 큰 학생을 앞으로 이동
+                        let temp = students[j];
+                        students[j] = students[j + 1];
+                        students[j + 1] = temp;
+                    }
                 }
             }
-        }
 
-        // 정렬된 결과를 document.write로 출력
-        document.write("<h2>학생들의 성적 순위:</h2>");
-        students.forEach((student, index) => {
-            document.write(`${index + 1}위: ${student.name} - ${student.score}점<br>`);
-        });
+            // 정렬된 결과를 document.write로 출력
+            document.write("<h2>학생들의 성적 순위:</h2>");
+            students.forEach((student, index) => {
+                document.write(`${index + 1}위: ${student.name} - ${student.score}점<br>`);
+            });
 
-        // 최고 점수 학생 출력
-        let topStudent = students[0];
-        document.write(`<h3>최고 점수를 받은 학생: ${topStudent.name}, 점수: ${topStudent.score}</h3>`);
-    </script>
-</body>
+            // 최고 점수 학생 출력
+            let topStudent = students[0];
+            document.write(`<h3>최고 점수를 받은 학생: ${topStudent.name}, 점수: ${topStudent.score}</h3>`);
+        </script>
+    </body>
 </html>
