@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>로또 번호 생성</title>
+        <style>
+            .lotto-number {
+                font-size: 2em; /* 글자 크기를 2배로 설정 */
+                border: 2px solid black; /* 검은색 테두리 설정 */
+                padding: 10px; /* 내부 여백 설정 */
+                margin: 5px; /* 외부 여백 설정 */
+                display: inline-block; /* 번호를 가로로 나열 */
+                border-radius: 50%; /* 원형 테두리 */
+                text-align: center; /* 텍스트 중앙 정렬 */
+                width: 50px; /* 고정된 너비 */
+                height: 50px; /* 고정된 높이 */
+                line-height: 50px; /* 텍스트를 중앙에 배치 */
+            }
+        </style>
+    </head>
+    <body>
+        <h2>생성된 로또 번호</h2>
+        <div id="lottoNumbers"></div>
+
+        <script>
+            function generateLottoNumbers() {
+                const numbers = new Array(6);
+                let count = 0;
+
+                while (count < 6) {
+                    const num = Math.floor(Math.random() * 45) + 1; // 랜덤함수로 지정된 로또번호 중 하나의 수
+                    let isDuplicate = false;//반복하지 않게해주는 변수
+                    
+                    //
+                }
+            }
+        </script>
+    </body>
+</html>
