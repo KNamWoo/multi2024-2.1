@@ -57,6 +57,18 @@
                         }
                     }
                 }
+
+                return numbers;
+            }
+
+            const lottoNumbers = generateLottoNumbers();
+            const lottoContainer = document.getElementById('lottoNumbers');
+
+            for (let i = 0; i < lottoNumbers.length; i++) {
+                const numberElement = document.createElement('div');
+                numberElement.className = 'lotto-number';
+                numberElement.textContent = lottoNumbers[i];
+                lottoContainer.appendChild(numberElement);
             }
         </script>
     </body>
