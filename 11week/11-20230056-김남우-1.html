@@ -30,9 +30,32 @@
 
                 while (count < 6) {
                     const num = Math.floor(Math.random() * 45) + 1; // 랜덤함수로 지정된 로또번호 중 하나의 수
-                    let isDuplicate = false;//반복하지 않게해주는 변수
+                    let isDuplicate = false;// 중복확인 변수
                     
-                    //
+                    // 중복 확인
+                    for (let i = 0; i < count; i++) {
+                        if (numbers[i] === num) {
+                            isDuplicate = true;
+                            break;
+                        }
+                    }
+
+                    // 중복이 아니면 배열에 추가
+                    if (!isDuplicate) {
+                        numbers[count] = num;
+                        count++;
+                    }
+                }
+
+                // 오름차순 정렬
+                for (let i = 0; i < numbers.length - 1; i++) {
+                    for (let j = i + 1; j < numbers.length; j++) {
+                        if(numbers[i] > numbers[j]){
+                            const temp = numbers[i];
+                            numbers[i] = numbers[j];
+                            numbers[j] = temp;
+                        }
+                    }
                 }
             }
         </script>
