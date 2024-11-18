@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>배경색 변경 프로그램</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                padding: 20px;
+            }
+
+            /* 배경색이 변경되는 div*/
+            #colorDiv {
+                color: white;
+                width: 100%;
+                height: 200px;
+                margin-top: 20px;
+                text-align: center;
+                line-height: 200px;
+                font-size: 24px;
+                font-weight: bold;
+                transition: background-color 0.5s;
+                border: 2px solid #000;
+            }
+
+            /* 월 출력 div */
+            #result {
+                color : green;
+                font-size: 24px;
+                font-weight: bold;
+                margin-top: 20px;
+                border: 2px solid #000;
+                padding: 10px;
+                width: 300px;
+                margin-top: 20px;
+            }
+
+            input, button {
+                padding: 10px;
+                font-size: 16px;
+                margin-top: 10px;
+            }
+
+            /* 난수 출력 div*/
+            #randomNumber {
+                color: blue;
+                font-size: 24px;
+                font-weight: bold;
+                margin-top: 20px;
+            }
+
+            /* 인사말 표시 */
+            #greeting {
+                color:darkorange;
+                font-size: 24px;
+                font-weight: bold;
+                margin-top: 20px;
+                padding: 10px;
+            }
+            
+            /* 현재 시간과 날짜 출력 */
+            #currentDateTime {
+                color: red;
+                font-size: 20px;
+                font-weight: normal;
+                margin-top: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>배경색 변경 프로그램</h2>
+
+        <!-- 입력받는 부분 -->
+        <label for="monthInput">월 입력 (1~12): </label>
+        <input type="number" id="monthInput" min="1" max="12">
+        <button id="submitBtn">월 출력</button>
+        
+        <!-- 배경색 변경 버튼 (난수 짝수/홀수) -->
+        <button id="randomColorButton"> 배경색 (난수 짝수/홀수)</button>
+
+        <!-- 배경색 변경 버튼 (오전/오후/저녁) -->
+        <button id="timeColorButton">배경색 (오전/오후/저녁)</button>
+        
+        <!-- 시간 입력받는 부분 -->
+        <label for="timeInput">12 (0~23): </label>
+        <input type="number" id="timeInput" min="0" max="23">
+        <button id="greetingButton">인사말 출력</button>
+        
+        <!-- 배경색 변경 div -->
+        <div id="colorDiv">배경색이 변경될 영역</div>
+        
+        <!-- 인사말 출력 div -->
+        <div id="greeting"></div>
+        
+        <!-- 월 출력 div -->
+        <div id="result"></div>
+        
+        <!-- 난수 출력 div -->
+        <div id="randomNumber"></div>
+
+        <!-- 현재 시간과 날짜 표시 div -->
+        <div id="currentDateTime"></div>
+
+        <script>
+            // 12개의 배열을 만들고 월에 대한 영문 문자열을 저장
+            const monthArray = [
+                { month: 1, Eng: "Jenuary" },
+                { month: 2, Eng: "Febuary" },
+                { month: 3, Eng: "March" },
+                { month: 4, Eng: "April" },
+                { month: 5, Eng: "May" },
+                { month: 6, Eng: "June" },
+                { month: 7, Eng: "July" },
+                { month: 8, Eng: "Auguest" },
+                { month: 9, Eng: "September" },
+                { month: 10, Eng: "October" },
+                { month: 11, Eng: "Nobenber" },
+                { month: 12, Eng: "December" }
+            ];
+
+            // 난수를 생성하는 함수 (1부터 50까지) : generateRandomNumber()
+            function generateRandomNumber() {
+                return parseInt(Math.random() * 50) + 1;
+            }
+
+            //난수에 따른 배경색 변경
+            function changeBackgroundColorByRandom() {
+                const randomNumber = generateRandomNumber(); // 난수 생성
+
+                const colorDiv = document.getElementById('colorDiv');
+
+                // 난수를 화면에 표시
+                document.getElementById('randomNumber').innerHTML = `난수: ${randomNumber}`;
+
+                // 난수의 짝수/홀수에 따라 배경색 변경
+                if(randomNumber%2){ // 홀수
+                    document.getElementById('colorDiv').innerHTML = `배경색: 빨간색(홀수)`;
+                    document.getElementById('colorDiv').style.backgroundColor = 'red';
+                } else { // 짝수
+                    document.getElementById('colorDiv').innerHTML = `배경색: 파란색(짝수)`;
+                    document.getElementById('colorDiv').style.backgroundColor = 'blue';
+                }
+            }
+
+            // 오전/오후/저녁에 따른 배경색과 인사말 변경
+            function changeBackgroundColorAndGreeting() {
+                const nowHour = new Date().getHours()// 현재 시간의 시간 부분을 가져옴
+                const colorDiv = document.getElementById('colorDiv');
+
+                // 오전/오후/저녁에 따른 배경색 및 인사말
+                if(nowHour >= 0 && nowHour < 12) { // 오전
+                    document.getElementById('colorDiv').innerHTML = `배경색: 노란색(오전)`;
+                    document.getElementById('colorDiv').style.backgroundColor = 'yellow';
+                } else if(nowHour >= 12 && nowHour < 18) { // 오후
+                    document.getElementById('colorDiv').innerHTML = `배경색: 주황색(오후)`;
+                    document.getElementById('colorDiv').style.backgroundColor = 'orange';
+                } else { // 저녁
+                    document.getElementById('colorDiv').innerHTML = `배경색: 보라색(저녁)`;
+                    document.getElementById('colorDiv').style.backgroundColor = 'purple';
+                }
+            }
+
+            //월을 출력하는 함수
+            function showMonth() {
+                const monthNumber = parseInt(querySelector("#monthInput").value); // 사용자가 입력한 월 숫자
+
+                if (monthNumber >= 1 && monthNumber <= 12) {
+                    // 입력한 월에 해당하는 영문 문자열을 배열에서 가져옴
+                    const monthName = monthArray[monthNumber - 1].Eng;
+                    document.getElementById('result').innerHTML = `선택한 월: ${monthName}`;
+                } else {
+                    document.getElementById('result').innerText = '1과 12 사이의 월 번호를 입력해주세요';
+                }
+            }
+
+            // 시간을 입력받아 인사말을 출력하는 함수
+            function showGreetingBaseOnTime() {
+                const hour = parseInt(querySelector("#timeInput").value); // 사용자가 입력한 시간
+
+                const greetingDiv = document.getElementById('greeting');
+
+                // 시간 입력이 0~23 사이의 값인지 확인
+                if(hour >= 0 && hour < 12) {
+                    document.getElementById('greeting').innerText = '좋은 아침입니다!';
+                } else if(hour >= 12 && hour < 18) {
+                    document.getElementById('greeting').innerText = '좋은 오후입니다!';
+                } else if(hour >= 18 && hour < 24) {
+                    document.getElementById('greeting').innerText = '좋은 저녁입니다!';
+                } else {
+                    document.getElementById('greeting').innerText = '0부터 23까지의 시간을 입력해주세요.';
+                }
+            }
+
+            // 현재 시간과 날짜를 표시하는 함수
+            function showCurrentDateTime() {
+                const currentDate = new Date();
+
+                const options = {
+                    weekday: 'long', // 요일
+                    year: 'numeric', // 연도
+                    month: 'long', // 월
+                    day: 'numeric', // 일
+                    hour: '2-digit', // 시간
+                    minute: '2-digit', // 분
+                    second: '2-digit', // 초
+                };
+
+                const formattedDate = currentDate.toLocaleString('ko-KR', options); // 한국어로 포맷
+
+                document.getElementById('currentDateTime').innerHTML = `현재 시간: ${formattedDate}`;
+            }
+
+            // 배경색 변경 버튼 클릭 시 배경색 변경 (난수 짝수/홀수)
+            document.getElementById('randomColorButton').addEventListener('click', changeBackgroundColorByRandom());
+            
+            // 배경색 변경 버튼 클릭 시 배경색 변경 및 인사말 갱신 (오전/오후/저녁)
+            document.getElementById('timeColorButton').addEventListener('click', changeBackgroundColorAndGreeting());
+
+            // 월 출력 버튼 클릭 시 월 출력
+            document.getElementById('submitBtn').addEventListener('click', showMonth());
+
+            // 인사말 출력 버튼 클릭 시 인사말 출력
+            document.getElementById('greetingButton').addEventListener('click', showGreetingBaseOnTime());
+
+            // 페이지 로드 시 현재 시간과 날짜 표시
+            showCurrentDateTime();
+
+            // 1초마다 현재 시간 갱신
+            setInterval(showCurrentDateTime, 1000);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>학생 성적 관리</title>
+    </head>
+    <body>
+        <h1>학생 성적 관리 프로그램</h1>
+        <div id="output"></div>
+
+        <script>
+            // 학생 데이터 배열 생성
+            let students = [
+                { name: "김동국", score: 85 },
+                { name: "박고려", score: 92 },
+                { name: "이연세", score: 78 },
+                { name: "윤서울", score: 88 },
+                { name: "홍이화", score: 95 }
+            ];
+
+            // 결과를 출력할 div 요소
+            const output = document.getElementById('output');
+
+            // 1. map: 각 학생의 이름을 대문자로 변환(한글은 가나다순)
+            let upperCaseNames = students.map(student => student.name.toUpperCase());
+            output.innerHTML += "<h2>학생 이름 대문자 변환:</h2><p>" + upperCaseNames.join(", ") + "</p>";
+
+            // 2. filter: 80점 이상인 학생만 추출
+            let highScores = students.filter(student => student.score >= 80);
+            output.innerHTML += "<h2>80점 이상인 학생:</h2><ul>";
+            highScores.forEach(student => {
+                output.innerHTML += `<li>${student.name} - ${student.score}점</li>`;
+            });
+            output.innerHTML += "</ul>";
+
+            // 3. reduce: 전체 학생의 평균 점수 계산
+            let averageScore = students.reduce((total, student) => total + student.score, 0) / students.length;
+            output.innerHTML += `<h2>전체 학생 평균 점수:</h2><p>${averageScore.toFixed(2)}점</p>`;
+
+            // 4. find: 특정 이름의 학생 찾기
+            let studentByName = students.find(student => student.name === "박고려");
+            output.innerHTML += "<h2>이름이 '박고려'인 학생:</h2>";
+            if (studentByName) {
+                output.innerHTML += `<p>${studentByName.name} - ${studentByName.score}점</p>`;
+            } else {
+                output.innerHTML += "<p>해당 학생의 찾을 수 없습니다.</p>";
+            }
+
+            // 5. forEach: 각 학생의 정보를 출력
+            output.innerHTML += "<h2>모든 학생 정보:</h2><ul>";
+            students.forEach(student => {
+                output.innerHTML += `<li>${student.name}: ${student.score}점</li>`;
+            });
+            output.innerHTML += "</ul>";
+
+            // 6. some: 90점 이상인 학생이 있는지 확인
+            let hasHighScore = students.some(student => student.score >= 90);
+            output.innerHTML += `<h2>90점 이상인 학생이 있는가?</h2><p>${hasHighScore ? "네, 있습니다." : "아니요, 없습니다."}</p>`;
+
+            // 7. every: 모든 학생이 70점 이상인지 확인
+            let allAbove70 = students.every(student => student.score >= 70);
+            output.innerHTML += `<h2>모든 학생이 70점 이상인가?</h2><p>
+                 ${allAbove70 ? "네, 모두 70점 이상입니다." : "아니요, 70점 이하인 학생이 있습니다."}</p>`;
+            
+            // 8. push: 새로운 학생 추가
+            students.push({ name: "최신우", score: 89 });
+            output.innerHTML += "<h2>새로운 학생 추가 (최신우, 89점):</h2><ul>";
+            students.forEach(student => {
+                output.innerHTML += `<li>${student.name}: ${student.score}점</li>`;
+            });
+            output.innerHTML += "</ul>";
+
+            // 9. pop: 마지막 학생 제거
+            let removedStudent = students.pop();
+            output.innerHTML += `<h2>마지막 학생 제거:</h2><p>제거된 학생:
+                            ${removedStudent.name} - ${removedStudent.score}점</p>`;
+            
+            // 10. slice: 첫 번째 두 학생 선택 (새 배열 생성)
+            let firstTwoStudents = students.slice(0, 2);
+            output.innerHTML += "<h2>첫 번째 두 학생:</h2><ul>";
+            firstTwoStudents.forEach(student => {
+                output.innerHTML += `<li>${student.name} - ${student.score}점</li>`;
+            });
+            output.innerHTML += "</ul>";
+
+            // 11. splice: 중간에 새로운 학생 추가
+            students.splice(2, 0, { name: "강신생", score: 90 });
+            output.innerHTML += "<h2>세 번째 위치에 새로운 학생 추가 (강신생, 90점):</h2><ul>";
+            students.forEach(student => {
+                output.innerHTML += `<li>${student.name} - ${student.score}점</li>`;
+            });
+            output.innerHTML += "</ul>";
+
+            // 12. splice: 특정 위치의 학생 제거
+            let removedSpecificStudent = students.splice(1, 1);
+            output.innerHTML += `<h2>두 번째 위치의 학생 제거:</h2><p>제거된 학생:
+                    ${removedSpecificStudent[0].name} - ${removedSpecificStudent[0].score}점</p>`;
+            output.innerHTML += "<ul>";
+            students.forEach(student => {
+                output.innerHTML += `<li>${student.name} - ${student.score}점</li>`;
+            });
+            output.innerHTML += "</ul>";
+        </script>
+    </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> 클래스 상속 </title>
+    </head>
+    <body>
+        <h2 id="test"></h2>
+        <h2 id="test1"></h2>
+        <h2 id="cat1"></h2>
+        <h2 id="cat2"></h2>
+        <script>
+            class Animal {
+                constructor(weight) {
+                    this.weight = weight; // 부모 클래스에 있는 상속자
+                }
+            }
+            class Dog extends Animal {
+                constructor(name, adoptedYear, weight) {
+                    super(weight);
+                    this.name = name;
+                    this.adoptedYear = adoptedYear;
+                }
+                age() {
+                    let date = new Date();
+                    return date.getFullYear() - this.adoptedYear;
+                }
+            }
+            class Cat extends Animal {
+                constructor(name1, adoptedYear1, weight1) {
+                    super(weight1);
+                    this.name1 = name1;
+                    this.adoptedYear1 = adoptedYear1;
+                }
+                age1() {
+                    let date1 = new Date();
+                    return date1.getFullYear() - this.adoptedYear1;
+                }
+            }
+            let myDog = new Dog("HappySSong", 2015, 5.5);
+            let myCat = new Cat("SmileSSong", 2023, 3.5);
+            document.getElementById("test").innerHTML =
+                "나의 강아지의 이름은 " + myDog.name + "이고, 나이는 "
+                + myDog.age() + "살입니다.";
+            document.getElementById("test1").innerHTML =
+                "나의 강아지의 체중은 " + myDog.weight + "킬로 입니다.";
+            document.getElementById("cat1").innerHTML =
+                "나의 고양이의 이름은 " + myCat.name1 + "이고, 나이는 "
+                + myCat.age1() + "살입니다.";
+            document.getElementById("cat2").innerHTML =
+                "나의 고양이의 체중은 " + myCat.weight + "킬로 입니다.";
+        </script>
+    </body>
+</html>

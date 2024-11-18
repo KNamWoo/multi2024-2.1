@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> 사용자 객체 - 클래스 </title>
+    </head>
+    <body>
+        <h2 id="test"></h2>
+        <script>
+            class Dog {
+                constructor(name, adoptedYear) { // 생성자 함수
+                    this.name = name; // 속성들
+                    this.adoptedYear = adoptedYear;
+                }
+
+                age() { // 메소드
+                    let date = new Date();
+                    return date.getFullYear() - this.adoptedYear;
+                }
+            }
+            let myDog = new Dog("HappySSong", 2015); // 객체 생성
+            document.getElementById("test").innerHTML =
+                "나의 강아지의 이름은 " + myDog.name + "이고, 나이는 " + myDog.age() + "살입니다.";
+        </script>
+    </body>
+</html>

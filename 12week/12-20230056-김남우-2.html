@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>2차원 배열</title>
+        <style>
+            table {
+                font-size: 20px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h2> 2차원 배열</h2>
+        <script>
+            var numbers = [[11, 12, 13, 14, 15], [16, 17, 18, 19, 20]];
+            showArray(numbers);
+            function showArray(arr) {
+                var str = "<table border='1' width='200' height='200'>";
+                for (var i = 0; i < arr.length; i++) {
+                    str += "<tr>";
+                    for (var j = 0; j < arr[i].length; j++) {
+                        str += "<td>" + arr[i][j] + "</td>";
+                    }
+                    str += "</tr>";
+                }
+                str += "</table>";
+                document.write(str);
+            }
+        </script>
+    </body>
+</html>
