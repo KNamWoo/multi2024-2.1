@@ -163,7 +163,7 @@
 
             //월을 출력하는 함수
             function showMonth() {
-                const monthNumber = parseInt(querySelector("#monthInput").value); // 사용자가 입력한 월 숫자
+                const monthNumber = parseInt(document.querySelector("#monthInput").value); // 사용자가 입력한 월 숫자
 
                 if (monthNumber >= 1 && monthNumber <= 12) {
                     // 입력한 월에 해당하는 영문 문자열을 배열에서 가져옴
@@ -176,7 +176,7 @@
 
             // 시간을 입력받아 인사말을 출력하는 함수
             function showGreetingBaseOnTime() {
-                const hour = parseInt(querySelector("#timeInput").value); // 사용자가 입력한 시간
+                const hour = parseInt(document.querySelector("#timeInput").value); // 사용자가 입력한 시간
 
                 const greetingDiv = document.getElementById('greeting');
 
@@ -212,16 +212,16 @@
             }
 
             // 배경색 변경 버튼 클릭 시 배경색 변경 (난수 짝수/홀수)
-            document.getElementById('randomColorButton').addEventListener('click', changeBackgroundColorByRandom());
+            document.getElementById('randomColorButton').addEventListener('click', changeBackgroundColorByRandom);
             
             // 배경색 변경 버튼 클릭 시 배경색 변경 및 인사말 갱신 (오전/오후/저녁)
-            document.getElementById('timeColorButton').addEventListener('click', changeBackgroundColorAndGreeting());
+            document.getElementById('timeColorButton').addEventListener('click', changeBackgroundColorAndGreeting);
 
             // 월 출력 버튼 클릭 시 월 출력
-            document.getElementById('submitBtn').addEventListener('click', showMonth());
+            document.getElementById('submitBtn').addEventListener('click', showMonth);
 
             // 인사말 출력 버튼 클릭 시 인사말 출력
-            document.getElementById('greetingButton').addEventListener('click', showGreetingBaseOnTime());
+            document.getElementById('greetingButton').addEventListener('click', showGreetingBaseOnTime);
 
             // 페이지 로드 시 현재 시간과 날짜 표시
             showCurrentDateTime();
