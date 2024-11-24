@@ -83,7 +83,7 @@
         <button id="timeColorButton">배경색 (오전/오후/저녁)</button>
         
         <!-- 시간 입력받는 부분 -->
-        <label for="timeInput">12 (0~23): </label>
+        <label for="timeInput">시간 입력 (0~23): </label>
         <input type="number" id="timeInput" min="0" max="23">
         <button id="greetingButton">인사말 출력</button>
         
@@ -124,7 +124,7 @@
                 return parseInt(Math.random() * 50) + 1;
             }
 
-            //난수에 따른 배경색 변경
+            // 난수에 따른 배경색 변경
             function changeBackgroundColorByRandom() {
                 const randomNumber = generateRandomNumber(); // 난수 생성
 
@@ -135,29 +135,29 @@
 
                 // 난수의 짝수/홀수에 따라 배경색 변경
                 if(randomNumber%2){ // 홀수
-                    document.getElementById('colorDiv').innerHTML = `배경색: 빨간색(홀수)`;
-                    document.getElementById('colorDiv').style.backgroundColor = 'red';
+                    colorDiv.innerHTML = `배경색: 빨간색(홀수)`;
+                    colorDiv.style.backgroundColor = 'red';
                 } else { // 짝수
-                    document.getElementById('colorDiv').innerHTML = `배경색: 파란색(짝수)`;
-                    document.getElementById('colorDiv').style.backgroundColor = 'blue';
+                    colorDiv.innerHTML = `배경색: 파란색(짝수)`;
+                    colorDiv.style.backgroundColor = 'blue';
                 }
             }
 
             // 오전/오후/저녁에 따른 배경색과 인사말 변경
             function changeBackgroundColorAndGreeting() {
-                const nowHour = new Date().getHours()// 현재 시간의 시간 부분을 가져옴
+                const nowHour = new Date().getHours() // 현재 시간의 시간 부분을 가져옴
                 const colorDiv = document.getElementById('colorDiv');
 
                 // 오전/오후/저녁에 따른 배경색 및 인사말
                 if(nowHour >= 0 && nowHour < 12) { // 오전
-                    document.getElementById('colorDiv').innerHTML = `배경색: 노란색(오전)`;
-                    document.getElementById('colorDiv').style.backgroundColor = 'yellow';
+                    colorDiv.innerHTML = `배경색: 노란색(오전)`;
+                    colorDiv.style.backgroundColor = 'yellow';
                 } else if(nowHour >= 12 && nowHour < 18) { // 오후
-                    document.getElementById('colorDiv').innerHTML = `배경색: 주황색(오후)`;
-                    document.getElementById('colorDiv').style.backgroundColor = 'orange';
+                    colorDiv.innerHTML = `배경색: 주황색(오후)`;
+                    colorDiv.style.backgroundColor = 'orange';
                 } else { // 저녁
-                    document.getElementById('colorDiv').innerHTML = `배경색: 보라색(저녁)`;
-                    document.getElementById('colorDiv').style.backgroundColor = 'purple';
+                    colorDiv.innerHTML = `배경색: 보라색(저녁)`;
+                    colorDiv.style.backgroundColor = 'purple';
                 }
             }
 
@@ -176,19 +176,19 @@
 
             // 시간을 입력받아 인사말을 출력하는 함수
             function showGreetingBaseOnTime() {
-                const hour = parseInt(document.querySelector("#timeInput").value); // 사용자가 입력한 시간
+                const hour = parseInt(document.querySelector("#timeInput").value); // 사용자가 입력한 시간 (0~23)
 
                 const greetingDiv = document.getElementById('greeting');
 
                 // 시간 입력이 0~23 사이의 값인지 확인
                 if(hour >= 0 && hour < 12) {
-                    document.getElementById('greeting').innerText = '좋은 아침입니다!';
+                    greetingDiv.innerText = '좋은 아침입니다!';
                 } else if(hour >= 12 && hour < 18) {
-                    document.getElementById('greeting').innerText = '좋은 오후입니다!';
+                    greetingDiv.innerText = '좋은 오후입니다!';
                 } else if(hour >= 18 && hour < 24) {
-                    document.getElementById('greeting').innerText = '좋은 저녁입니다!';
+                    greetingDiv.innerText = '좋은 저녁입니다!';
                 } else {
-                    document.getElementById('greeting').innerText = '0부터 23까지의 시간을 입력해주세요.';
+                    greetingDiv.innerText = '0부터 23까지의 시간을 입력해주세요.';
                 }
             }
 
