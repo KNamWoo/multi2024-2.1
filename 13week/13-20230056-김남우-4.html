@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html>
     <head>
         <meta charset="UTF-8">
-        <title>Document</title>
+        <title>태그 이름으로 HTML 요소 찾기 </title>
     </head>
     <body>
-        
+        <h1>태그 이름으로 HTML 요소 찾기 - getelementsByTagName() 메소드 </h1>
+        <p>첫번째 p 요소</p> <!-- 첫번째 p 객체 -->
+        <p>두번째 p 요소</p> <!-- 두번째 p 객체 -->
+        <p id="special"></p> <!-- 세번째 p 객체 -->
+
+        <script>
+            let eleArray = document.getElementsByTagName("p");
+            document.getElementById("special").innerHTML = 'eleArray[0]: ' + eleArray[0].innerHTML;
+        </script>
     </body>
 </html>
