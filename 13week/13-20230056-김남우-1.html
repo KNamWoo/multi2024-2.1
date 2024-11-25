@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html>
     <head>
         <meta charset="UTF-8">
-        <title>Document</title>
+        <title>DOM 객체-getElementById() 메소드 </title>
+        <script>
+            function process() {
+                var obj = document.getElementById("target");
+                alert(obj.value);
+            }
+        </script>
     </head>
     <body>
-        
+        <form name="myform">
+            <input type="text" id="target" name="text1">
+            <input type="submit" value="제출" onclick="process()">
+        </form>
     </body>
 </html>
