@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- 문자 인코딩 설정 -->
+        <meta charset="UTF-8">
+        <title>웹기술, 브라우저 종류, 도시 선택</title>
+
+        <script>
+            // 웹 기술 항목의 스타일을 변경하는 함수
+            function change_TextStyle() {
+                // class가 'po'인 모든 요소를 가져옴
+                let rolist = document.getElementsByClassName("po");
+                
+                // 각 요소에 대해 스타일 변경
+                for (let i = 0; i < rolist.length; i++) {
+                    rolist[i].style.backgroundColor = "yellow";   // 배경색 변경
+                    rolist[i].style.color = "green";              // 글자색 변경
+                    rolist[i].style.border = "red 1px solid";     // 테두리 스타일 변경
+                }
+            }
+
+            // 이미지 요소를 동적으로 생성하고 클릭 시 삭제하는 함수
+            function showJpg() {
+                // 이미지 삽입할 위치 찾기
+                var imgContainer = document.getElementById("imgContainer");
+                
+                // 새로운 img 태그 동적 생성
+                const newImg = document.createElement("img"); 
+                newImg.src = "chrome.jpg";  // 이미지 경로 설정
+                newImg.alt = "Chrome Browser";  // 이미지 로딩 실패 시 대체 텍스트 설정
+                newImg.style.width = "100px";  // 이미지 크기 설정
+                newImg.style.height = "100px"; 
+
+                // 이미지 클릭 시 해당 이미지를 삭제하는 이벤트 추가
+                newImg.addEventListener("click", function () {
+                    let p = this.parentElement;
+                    p.removeChild(this);  // 부모 요소에서 클릭된 이미지 삭제
+                });
+
+                // 이미지가 이미 존재하지 않으면 새 이미지 추가
+                if (!imgContainer.hasChildNodes()) {
+                    imgContainer.appendChild(newImg);  // 이미지 추가
+                }
+            }
+
+            // 라디오 버튼에서 선택된 도시 값을 확인하는 함수
+            function dosicheck() {
+                let found = null;  // 선택된 값이 없을 경우를 대비해 null로 초기화
+                let kdosi = document.getElementsByTagName("input"); // 모든 input 요소 가져오기
+
+                // 각 input 요소에서 선택된 라디오 버튼을 찾음
+                for (let i = 0; i < kdosi.length; i++) {
+                    if (kdosi[i].type === "radio" && kdosi[i].checked) {  // 라디오 버튼이 체크된 경우
+                        found = kdosi[i];  // 선택된 라디오 버튼을 found에 저장
+                        break;
+                    }
+                }
+
+                // 선택된 라디오 버튼이 있으면 알림, 없으면 "선택된 것이 없음" 메시지 출력
+                if (found !== null) {
+                    alert(found.value + "이 선택되었음");  // 선택된 값 알림
+                } else {
+                    alert("선택된 것이 없음");  // 아무 것도 선택되지 않았을 때 알림
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+        <h1>조건에 알맞는 자바스크립트 코드를 빈칸에 작성</h1>
+
+        <!-- 웹 기술 3가지 항목과 버튼 -->
+        <p>웹 기술 3가지</p>
+        <button onclick="change_TextStyle()">Order</button>
+        <ol>
+            <li class="po">HTML5</li>  <!-- 첫 번째 웹 기술 -->
+            <li class="po">CSS3</li>   <!-- 두 번째 웹 기술 -->
+            <li class="po">JavaScript</li>  <!-- 세 번째 웹 기술 -->
+        </ol>
+
+        <hr>  <!-- 구분선 -->
+
+        <!-- 브라우저 종류와 관련된 내용 -->
+        <p>브라우저 종류</p>
+        <button onclick="showJpg()">default Browser</button>
+        엣지, <span>크롬</span><span id="imgContainer"></span>,  <!-- 'imgContainer'에 동적으로 이미지 삽입 -->
+        오페라, 파이어폭스 등이 있다.
+        
+        <hr>  <!-- 구분선 -->
+
+        <!-- 도시 선택을 위한 라디오 버튼들 -->
+        <input type="radio" name="dosi" value="서울">Seoul  <!-- 서울 선택 라디오 버튼 -->
+        <input type="radio" name="dosi" value="부산">Busan  <!-- 부산 선택 라디오 버튼 -->
+        <input type="radio" name="dosi" value="춘천">ChunChen  <!-- 춘천 선택 라디오 버튼 -->
+        
+        <!-- 선택된 도시 확인 버튼 -->
+        <button onclick="dosicheck()">검색</button>
+    </body>
+</html>
